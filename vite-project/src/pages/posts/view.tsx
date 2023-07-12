@@ -1,4 +1,4 @@
-export const PostPage = () => {
+export const PostsPage = () => {
 
   return (
     <div>

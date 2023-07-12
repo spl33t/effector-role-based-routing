@@ -16,7 +16,6 @@ export default ({ mode }: UserConfig) => {
       resolve: {
         alias: {
           "@": path.resolve(process.cwd(), "./src"),
-          "@packages": path.resolve(process.cwd(), "../../packages"),
         },
       },
       server: {
