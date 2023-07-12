@@ -1,6 +1,6 @@
 import "./app.css"
 import { Pages } from "../pages";
-import { $role, changeRole } from "../entities/session/model"
+import { $role, changeRole } from "../shared/config/session"
 import { useUnit } from "effector-react";
 
 
