@@ -27,17 +27,13 @@ type RoutesInstance<T extends Record<any, RouteConfig<T>>> = {
 }
 
 function defineRoutes<Routes extends RoutesConfig<Routes>>(routes: Routes) {
-  let result = {} as unknown as RoutesInstance<Routes>
+  let result = {} as Record<any, RoutesInstance<any>[keyof Routes]>
 
   for (const routesKey in routes) {
-    const route = routes[routesKey]
-    const routeInstance = createRoute()
-
-    // @ts-ignore
     result[routesKey] = {
-      ...route,
-      route: routeInstance,
-    }
+      ...routes[routesKey],
+      route: createRoute(),
+    } as unknown as RoutesInstance<any>[keyof Routes]
   }
 
   for (const routeKey in routes) {
@@ -83,7 +79,6 @@ export const routes = defineRoutes({
     notAccessRoles: {
       anonymous: { redirectToRoute: "auth" },
     }
-
   },
   auth: {
     path: "/auth",
